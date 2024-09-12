@@ -1,0 +1,25 @@
+How to use P-CACTI?
+====================
+
+-> define the cache model using the files in ./xmls directory.
+-> for CMOS, run the "cacti" binary: "./cacti -infile xmls/cache_config_cmos.xml -outfile pcacti_detailed_report.txt"
+-> for FinFET, run the "cacti" binary: "./cacti -infile xmls/cache_config_finfet.xml -outfile pcacti_detailed_report.txt"
+
+Detailed simulation report will be written in "./pcacti_detailed_report.txt". Also, there will be a simulation summary written in "./pcacti_report.txt".
+
+====================
+
+Neelu: 
+
+NOTE: Please run the following command in case of errors related to missing bits/c++congif.h file: 
+
+sudo apt-get install gcc-multilib g++-multilib 
+
+-> Adding script to run pcacti with different configs and extract relevant stats as results. 
+
+Run the following command, which will generate result files for caches, tlbs, and prefetcher structures in the "results" directory under separate directories: 
+
+python3 scripts/get_energy_for_all.py 
+
+Eg. the directory "results/L1D_32KB_8w" contains the extracted stats as well as xml config file for 32 KB L1D cache with 8 ways. 
+
